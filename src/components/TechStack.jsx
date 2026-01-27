@@ -1,15 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaHtml5 } from "react-icons/fa";
+import { FaHtml5, FaBootstrap } from "react-icons/fa";
 import { LiaCss3Alt } from "react-icons/lia";
-import { FaBootstrap } from "react-icons/fa";
-import { SiTailwindcss } from "react-icons/si";
+import { SiTailwindcss, SiPostman, SiPycharm, SiPandas, SiRedux } from "react-icons/si";
 import { TbBrandVscode } from "react-icons/tb";
-import { SiPostman } from "react-icons/si";
-import { SiPycharm } from "react-icons/si";
-import { SiPandas } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
-import { SiRedux } from "react-icons/si";
 import {
   DiJavascript1,
   DiReact,
@@ -19,178 +14,102 @@ import {
   DiGit,
 } from "react-icons/di";
 
+const TechIcon = ({ icon: Icon, name }) => {
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+        rotateY: 15,
+        rotateX: -15,
+        transition: { type: "spring", stiffness: 300 }
+      }}
+      className="tech-icons flex flex-col items-center gap-2 group"
+    >
+      <Icon className="text-5xl md:text-6xl text-gray-400 group-hover:text-purple-400 transition-colors duration-300" />
+      <span className="text-xs font-mono text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase tracking-widest mt-2">{name}</span>
+    </motion.div>
+  );
+};
+
+const skills = [
+  { icon: DiJavascript1, name: "JavaScript" },
+  { icon: DiNodejs, name: "Node.js" },
+  { icon: DiReact, name: "React" },
+  { icon: DiMongodb, name: "MongoDB" },
+  { icon: SiTailwindcss, name: "Tailwind" },
+  { icon: DiGit, name: "Git" },
+  { icon: FaHtml5, name: "HTML5" },
+  { icon: LiaCss3Alt, name: "CSS3" },
+  { icon: FaBootstrap, name: "Bootstrap" },
+];
+
+const tools = [
+  { icon: TbBrandVscode, name: "VS Code" },
+  { icon: SiPostman, name: "Postman" },
+  { icon: SiRedux, name: "Redux" },
+  { icon: IoLogoFirebase, name: "Firebase" },
+  { icon: DiPython, name: "Python" },
+  { icon: SiPandas, name: "Pandas" },
+];
+
 function TechStack() {
   return (
-    <>
-      <section className="text-slate-50 flex flex-col items-center my-2">
-        <div>
-          <h1 className="text-4xl sm:text-5xl text-center my-10">
-            Professional <span className="text-amber-300">Skillset</span>
-          </h1>
-          <div className="flex flex-col sm:gap-10 flex-wrap sm:mt-14 px-[0]">
-            <ul className="flex  gap-[2rem] sm:gap-[6rem] flex-wrap text-7xl justify-center">
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <DiJavascript1 />
-            
-              </motion.li>
+    <section className="py-20 flex flex-col items-center px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-16"
+      >
+        <h1 className="text-4xl md:text-6xl font-black mb-4">
+          Professional <span className="text-gradient">Skillset</span>
+        </h1>
+        <div className="w-20 h-1 bg-purple-500 mx-auto rounded-full"></div>
+      </motion.div>
 
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <DiNodejs />
-              </motion.li>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl">
+        {skills.map((skill, index) => (
+          <motion.div
+            key={skill.name}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <TechIcon icon={skill.icon} name={skill.name} />
+          </motion.div>
+        ))}
+      </div>
 
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <DiGit />
-              </motion.li>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-center mt-24 mb-16"
+      >
+        <h1 className="text-4xl md:text-5xl font-black mb-4">
+          Favorite <span className="text-amber-300">Tools</span>
+        </h1>
+        <div className="w-16 h-1 bg-amber-300 mx-auto rounded-full"></div>
+      </motion.div>
 
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <DiReact />
-              </motion.li>
-            </ul>
-            <ul className="flex  gap-[2rem] sm:gap-[6rem] flex-wrap text-7xl justify-center">
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <DiMongodb />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <DiPython />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <FaHtml5 />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <LiaCss3Alt />
-              </motion.li>
-            </ul>
-
-            <ul className="flex  gap-[2rem] sm:gap-[6rem] flex-wrap text-7xl justify-center">
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <FaBootstrap />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <SiTailwindcss />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <SiPandas />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <IoLogoFirebase />
-              </motion.li>
-            </ul>
-          </div>
-        </div>
-
-        <div>
-          <h1 className="text-5xl text-center my-10">Tools</h1>
-
-          <div className="flex flex-col gap-12 mt-10">
-            <ul className="flex gap-[6rem] text-7xl">
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.2 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <TbBrandVscode />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.3 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <SiPostman />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.3 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <SiRedux />
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.4 }}
-                className="border-2 border-amber-300 py-[1.6rem] px-[3.5rem] rounded-md hover:border-b-2 hover:border-purple-600"
-              >
-                <SiPycharm />
-              </motion.li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-7xl">
+        {tools.map((tool, index) => (
+          <motion.div
+            key={tool.name}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <TechIcon icon={tool.icon} name={tool.name} />
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 }
 
 export default TechStack;
-

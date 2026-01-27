@@ -1,72 +1,80 @@
-import React from "react"; 
-import Particles from "react-tsparticles"; 
-import { loadFull } from "tsparticles"; 
+import React from "react";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
-const Particle = () => { 
-  const particlesInit = async (main) => { 
-    console.log(main); 
-    await loadFull(main); 
-  }; 
-  const particlesLoaded = (container) => { 
-    console.log(container); 
-  }; 
+const Particle = () => {
+  const particlesInit = async (main) => {
+    await loadFull(main);
+  };
 
-  return ( 
-    <div> 
-      <Particles 
-        id="tsparticles" 
-        init={particlesInit} 
-        loaded={particlesLoaded} 
-        options={{ 
-          background: { 
-            color: "rgb(10,10,25)", 
-          }, 
-          fpsLimit: 60, 
-          particles: { 
-            shape: { 
-              type: "circle", 
-            }, 
-            size: { 
-              random: { 
-                enable: true, 
-                minimumValue: 0.5, 
-              }, 
-              value: 1.4, 
-            }, 
-            color: { 
-              value: "#f1f1f1", 
-            }, 
-            number: { 
-              density: { 
-                enable: true, 
-                area: 1080, 
-              }, 
-              limit: 0, 
-              value: 800, 
-            }, 
-            opacity: { 
-              animation: { 
-                enable: true, 
-                minimumValue: 0.5, 
-                speed: 1.6, 
-                sync: false, 
-              }, 
-              random: { 
-                enable: true, 
-                minimumValue: 0.1, 
-              }, 
-              value: 1, 
-            }, 
-            interactivity: { 
-              detectsOn: "canvas", 
-              events: { 
-                resize: true, 
-              }, 
-            }, 
-          }, 
-        }} 
-      /> 
-    </div> 
-  ); 
-}  
-export default Particle; 
+  return (
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      options={{
+        fullScreen: { enable: true, zIndex: -1 },
+        background: {
+          color: "transparent",
+        },
+        fpsLimit: 120,
+        interactivity: {
+          events: {
+            onClick: { enable: false },
+            onHover: {
+              enable: true,
+              mode: "slow",
+            },
+            resize: true,
+          },
+          modes: {
+            slow: {
+              factor: 3,
+              radius: 200,
+            },
+          },
+        },
+        particles: {
+          color: {
+            value: "#a855f7",
+          },
+          links: {
+            color: "#a855f7",
+            distance: 150,
+            enable: true,
+            opacity: 0.1,
+            width: 1,
+          },
+          move: {
+            direction: "none",
+            enable: true,
+            outModes: {
+              default: "bounce",
+            },
+            random: false,
+            speed: 0.8,
+            straight: false,
+          },
+          number: {
+            density: {
+              enable: true,
+              area: 800,
+            },
+            value: 40,
+          },
+          opacity: {
+            value: 0.2,
+          },
+          shape: {
+            type: "circle",
+          },
+          size: {
+            value: { min: 1, max: 3 },
+          },
+        },
+        detectRetina: true,
+      }}
+    />
+  );
+};
+
+export default Particle;
