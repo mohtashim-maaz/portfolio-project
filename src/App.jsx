@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import HomePage from "./pages/HomePage";
 import AboutPage from './pages/AboutPage';
 import ProjectsPage from './pages/ProjectsPage';
+import ResumePage from './pages/ResumePage';
 import CustomCursor from './components/CustomCursor';
 import './index.css';
 
@@ -53,6 +54,7 @@ const AnimatedRoutes = () => {
         <Route path='/' element={<PageWrapper><HomePage /></PageWrapper>} />
         <Route path='/about' element={<PageWrapper><AboutPage /></PageWrapper>} />
         <Route path='/projects' element={<PageWrapper><ProjectsPage /></PageWrapper>} />
+        <Route path='/resume' element={<PageWrapper><ResumePage /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
